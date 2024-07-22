@@ -20,7 +20,6 @@ struct RayPayload {
 	float reflector;
 };
 
-//layout(location = 0) rayPayloadInEXT vec3 hitValue;	// output of ray tracing
 layout(location = 0) rayPayloadInEXT RayPayload rayPayload;
 layout(location = 2) rayPayloadEXT bool shadowed;
 hitAttributeEXT vec2 attribs;
@@ -35,7 +34,6 @@ struct GeometryNode {
 	int textureIndexOcclusion;
 };
 layout(binding = 4, set = 0) buffer GeometryNodes { GeometryNode nodes[]; } geometryNodes;
-
 layout(binding = 5, set = 0) uniform sampler2D textures[];
 
 #include "bufferreferences.glsl"
@@ -57,16 +55,17 @@ void main()
 	rayPayload.color = color;
 	rayPayload.distance = gl_RayTmaxEXT;
 	rayPayload.normal = normalize(tri.normal);
-	//rayPayload.reflector = ((v0.color.r == 1.0f) && (v0.color.g == 1.0f) && (v0.color.b == 1.0f)) ? 1.0f : 0.0f; 
 	rayPayload.reflector = (geometryNode.textureIndexBaseColor == 0) || (geometryNode.textureIndexBaseColor == 4) ? 1.0f : 0.0f;
 
 	// Shadow casting
-	float tmin = 0.001;
-	float tmax = 10000.0;
-	float epsilon = 0.001;
+	float tmin = 0.001f;
+	float tmax = 10000.0f;
+	float epsilon = 0.001f;
 	vec3 origin = gl_WorldRayOriginEXT + gl_WorldRayDirectionEXT * gl_HitTEXT + tri.normal * epsilon;
+
 	shadowed = true;  
 	vec3 lightVector = vec3(5.0, -12.5, 0.0);
+
 	// Trace shadow ray and offset indices to match shadow hit/miss shader group indices
 	traceRayEXT(topLevelAS, gl_RayFlagsTerminateOnFirstHitEXT | gl_RayFlagsOpaqueEXT | gl_RayFlagsSkipClosestHitShaderEXT, 0xFF, 0, 0, 1, origin, tmin, lightVector, tmax, 2);
 	if (shadowed) {

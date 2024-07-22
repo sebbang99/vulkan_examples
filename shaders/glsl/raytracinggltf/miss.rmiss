@@ -14,12 +14,10 @@ struct RayPayload {
 	float reflector;
 };
 
-//layout(location = 0) rayPayloadInEXT vec3 hitValue;
 layout(location = 0) rayPayloadInEXT RayPayload rayPayload;
 
 void main()
 {
-//    hitValue = vec3(1.0);
 	rayPayload.color = vec3(0.1, 0.1, 0.1);
 
 	rayPayload.distance = -1.0f;	// miss, Áï skybox ºÎµóÇû´Ù´Â Ç¥½Ã
