@@ -44,14 +44,14 @@ void main()
 		traceRayEXT(topLevelAS, rayFlags, cullMask, 0, 0, 0, origin.xyz, tmin, direction.xyz, tmax, 0);
 		vec3 hitColor = rayPayload.color;
 
-		if (rayPayload.distance < 0.0f) {
+		if (rayPayload.distance < 0.0f) {	// miss shader ´Ù³à¿Â °Å¸é
 			color += hitColor;
 			break;
-		} else if (rayPayload.reflector == 1.0f) {
+		} else if (rayPayload.reflector == 1.0f) {	// chit shader ´Ù³à¿Ô´Âµ¥ reflector ÀÌ¸é
 			const vec4 hitPos = origin + direction * rayPayload.distance;
 			origin.xyz = hitPos.xyz + rayPayload.normal * 0.001f;
 			direction.xyz = reflect(direction.xyz, rayPayload.normal);
-		} else {
+		} else {	// chit shader ´Ù³à¿Ô´Âµ¥ reflector ¾Æ´Ï¸é
 			color += hitColor;
 			break;
 		}

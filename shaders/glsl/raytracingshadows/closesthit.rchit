@@ -2,8 +2,17 @@
 #extension GL_EXT_ray_tracing : require
 #extension GL_EXT_nonuniform_qualifier : enable
 
-layout(location = 0) rayPayloadInEXT vec3 hitValue;
-layout(location = 2) rayPayloadEXT bool shadowed;
+struct RayPayload {
+	vec3 color;
+	float distance;
+	vec3 normal;
+	float reflector;
+};
+
+//layout(location = 0) rayPayloadInEXT vec3 hitValue;	// output of ray tracing
+layout(location = 0) rayPayloadInEXT RayPayload rayPayload;
+
+layout(location = 2) rayPayloadEXT bool shadowed;	// shadow shader에게 전달해주는 정보
 hitAttributeEXT vec2 attribs;
 
 layout(binding = 0, set = 0) uniform accelerationStructureEXT topLevelAS;
@@ -58,10 +67,17 @@ void main()
 	vec3 normal = normalize(v0.normal * barycentricCoords.x + v1.normal * barycentricCoords.y + v2.normal * barycentricCoords.z);
 
 	// Basic lighting
-	vec3 lightVector = normalize(ubo.lightPos.xyz);
-	float dot_product = max(dot(lightVector, normal), 0.2);
-	hitValue = v0.color.rgb * dot_product;
- 
+	vec3 lightVector = normalize(ubo.lightPos.xyz);	// L vector
+	float dot_product = max(dot(lightVector, normal), 0.2);	// L dot N
+	
+	//hitValue = v0.color.rgb * dot_product;
+	rayPayload.color = v0.color.rgb * dot_product;
+	//rayPayload.color = vec3(0.0f, 0.0f, 1.0f);	// hit이면 blue로 표시
+	rayPayload.distance = gl_RayTmaxEXT;
+	rayPayload.normal = normal;
+
+	rayPayload.reflector = ((v0.color.r == 1.0f) && (v0.color.g == 1.0f) && (v0.color.b == 1.0f)) ? 1.0f : 0.0f; 
+
 	// Shadow casting
 	float tmin = 0.001;
 	float tmax = 10000.0;
@@ -70,6 +86,7 @@ void main()
 	// Trace shadow ray and offset indices to match shadow hit/miss shader group indices
 	traceRayEXT(topLevelAS, gl_RayFlagsTerminateOnFirstHitEXT | gl_RayFlagsOpaqueEXT | gl_RayFlagsSkipClosestHitShaderEXT, 0xFF, 0, 0, 1, origin, tmin, lightVector, tmax, 2);
 	if (shadowed) {
-		hitValue *= 0.3;
+		//hitValue *= 0.3;
+		rayPayload.color *= 0.3;
 	}
 }

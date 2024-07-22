@@ -324,6 +324,7 @@ VkStridedDeviceAddressRegionKHR VulkanRaytracingSample::getSbtEntryStridedDevice
 	return stridedDeviceAddressRegionKHR;
 }
 
+// createShaderBindingTable(shaderBindingTables.raygen, 1); 이런식으로 호출
 void VulkanRaytracingSample::createShaderBindingTable(ShaderBindingTable& shaderBindingTable, uint32_t handleCount)
 {
 	// Create buffer to hold all shader handles for the SBT

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleMigrationSettings" migrationVersion="1" />
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="gradleJvm" value="#GRADLE_LOCAL_JAVA_HOME" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/../.." />
+            <option value="$PROJECT_DIR$/../bloom" />
+            <option value="$PROJECT_DIR$/../computecloth" />
+            <option value="$PROJECT_DIR$/../computecullandlod" />
+            <option value="$PROJECT_DIR$/../computeheadless" />
+            <option value="$PROJECT_DIR$/../computenbody" />
+            <option value="$PROJECT_DIR$/../computeparticles" />
+            <option value="$PROJECT_DIR$/../computeraytracing" />
+            <option value="$PROJECT_DIR$/../computeshader" />
+            <option value="$PROJECT_DIR$/../conservativeraster" />
+            <option value="$PROJECT_DIR$/../debugutils" />
+            <option value="$PROJECT_DIR$/../deferred" />
+            <option value="$PROJECT_DIR$/../deferredmultisampling" />
+            <option value="$PROJECT_DIR$/../deferredshadows" />
+            <option value="$PROJECT_DIR$/../descriptorindexing" />
+            <option value="$PROJECT_DIR$/../descriptorsets" />
+            <option value="$PROJECT_DIR$/../displacement" />
+            <option value="$PROJECT_DIR$/../distancefieldfonts" />
+            <option value="$PROJECT_DIR$/../dynamicuniformbuffer" />
+            <option value="$PROJECT_DIR$/../gears" />
+            <option value="$PROJECT_DIR$/../geometryshader" />
+            <option value="$PROJECT_DIR$/../gltfloading" />
+            <option value="$PROJECT_DIR$/../gltfscenerendering" />
+            <option value="$PROJECT_DIR$/../gltfskinning" />
+            <option value="$PROJECT_DIR$/../hdr" />
+            <option value="$PROJECT_DIR$/../imgui" />
+            <option value="$PROJECT_DIR$/../indirectdraw" />
+            <option value="$PROJECT_DIR$/../inlineuniformblocks" />
+            <option value="$PROJECT_DIR$/../inputattachments" />
+            <option value="$PROJECT_DIR$/../instancing" />
+            <option value="$PROJECT_DIR$/../multisampling" />
+            <option value="$PROJECT_DIR$/../multithreading" />
+            <option value="$PROJECT_DIR$/../multiview" />
+            <option value="$PROJECT_DIR$/../negativeviewportheight" />
+            <option value="$PROJECT_DIR$/../occlusionquery" />
+            <option value="$PROJECT_DIR$/../offscreen" />
+            <option value="$PROJECT_DIR$/../oit" />
+            <option value="$PROJECT_DIR$/../parallaxmapping" />
+            <option value="$PROJECT_DIR$/../particlesystem" />
+            <option value="$PROJECT_DIR$/../pbrbasic" />
+            <option value="$PROJECT_DIR$/../pbribl" />
+            <option value="$PROJECT_DIR$/../pbrtexture" />
+            <option value="$PROJECT_DIR$/../pipelines" />
+            <option value="$PROJECT_DIR$/../pipelinestatistics" />
+            <option value="$PROJECT_DIR$/../pushconstants" />
+            <option value="$PROJECT_DIR$/../pushdescriptors" />
+            <option value="$PROJECT_DIR$/../radialblur" />
+            <option value="$PROJECT_DIR$/../rayquery" />
+            <option value="$PROJECT_DIR$/../raytracingbasic" />
+            <option value="$PROJECT_DIR$/../raytracinggltf" />
+            <option value="$PROJECT_DIR$/../raytracingreflections" />
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/../renderheadless" />
+            <option value="$PROJECT_DIR$/../screenshot" />
+            <option value="$PROJECT_DIR$/../shadowmapping" />
+            <option value="$PROJECT_DIR$/../shadowmappingcascade" />
+            <option value="$PROJECT_DIR$/../shadowmappingomni" />
+            <option value="$PROJECT_DIR$/../specializationconstants" />
+            <option value="$PROJECT_DIR$/../sphericalenvmapping" />
+            <option value="$PROJECT_DIR$/../ssao" />
+            <option value="$PROJECT_DIR$/../stencilbuffer" />
+            <option value="$PROJECT_DIR$/../subpasses" />
+            <option value="$PROJECT_DIR$/../terraintessellation" />
+            <option value="$PROJECT_DIR$/../tessellation" />
+            <option value="$PROJECT_DIR$/../textoverlay" />
+            <option value="$PROJECT_DIR$/../texture" />
+            <option value="$PROJECT_DIR$/../texture3d" />
+            <option value="$PROJECT_DIR$/../texturearray" />
+            <option value="$PROJECT_DIR$/../texturecubemap" />
+            <option value="$PROJECT_DIR$/../texturecubemaparray" />
+            <option value="$PROJECT_DIR$/../texturemipmapgen" />
+            <option value="$PROJECT_DIR$/../triangle" />
+            <option value="$PROJECT_DIR$/../variablerateshading" />
+            <option value="$PROJECT_DIR$/../vertexattributes" />
+            <option value="$PROJECT_DIR$/../viewportarray" />
+            <option value="$PROJECT_DIR$/../vulkanscene" />
+          </set>
+        </option>
+        <option name="resolveExternalAnnotations" value="false" />
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>

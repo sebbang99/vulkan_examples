@@ -74,7 +74,8 @@ public:
 		// The shaders are accessing the vertex and index buffers of the scene, so the proper usage flag has to be set on the vertex and index buffers for the scene
 		vkglTF::memoryPropertyFlags = VK_BUFFER_USAGE_ACCELERATION_STRUCTURE_BUILD_INPUT_READ_ONLY_BIT_KHR | VK_BUFFER_USAGE_SHADER_DEVICE_ADDRESS_BIT | VK_BUFFER_USAGE_STORAGE_BUFFER_BIT;
 		const uint32_t glTFLoadingFlags = vkglTF::FileLoadingFlags::PreTransformVertices | vkglTF::FileLoadingFlags::PreMultiplyVertexColors | vkglTF::FileLoadingFlags::FlipY;
-		scene.loadFromFile(getAssetPath() + "models/vulkanscene_shadow.gltf", vulkanDevice, queue, glTFLoadingFlags);
+		//scene.loadFromFile(getAssetPath() + "models/reflection_scene.gltf", vulkanDevice, queue, glTFLoadingFlags);
+		scene.loadFromFile(getAssetPath() + "models/my_sponza/Sponza.gltf", vulkanDevice, queue, glTFLoadingFlags);
 
 		VkDeviceOrHostAddressConstKHR vertexBufferDeviceAddress{};
 		VkDeviceOrHostAddressConstKHR indexBufferDeviceAddress{};
@@ -256,6 +257,10 @@ public:
 		const uint32_t handleSizeAligned = vks::tools::alignedSize(rayTracingPipelineProperties.shaderGroupHandleSize, rayTracingPipelineProperties.shaderGroupHandleAlignment);
 		const uint32_t groupCount = static_cast<uint32_t>(shaderGroups.size());
 		const uint32_t sbtSize = groupCount * handleSizeAligned;
+
+		setupConsole("RaytracingShadows");
+		std::cout << "[handleSize] " << handleSize << std::endl;
+		std::cout << "[handleSizeAligned] " << handleSizeAligned << std::endl;
 
 		std::vector<uint8_t> shaderHandleStorage(sbtSize);
 		VK_CHECK_RESULT(vkGetRayTracingShaderGroupHandlesKHR(device, pipeline, 0, groupCount, sbtSize, shaderHandleStorage.data()));

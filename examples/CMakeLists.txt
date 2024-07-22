@@ -1,13 +1,16 @@
 # Copyright (c) 2016-2024, Sascha Willems
 # SPDX-License-Identifier: MIT
 
+# Vulkan/examples의 CMakeLists.txt 
+# root의 CMakeLists에 의해 호출되어 모든 예제들에 대한 빌드파일들을 전부 생성해준다.
+
 # Function for building single example
 function(buildExample EXAMPLE_NAME)
 	SET(EXAMPLE_FOLDER ${CMAKE_CURRENT_SOURCE_DIR}/${EXAMPLE_NAME})
 	message(STATUS "Generating project file for example in ${EXAMPLE_FOLDER}")
 	# Main
 	file(GLOB SOURCE *.cpp ${BASE_HEADERS} ${EXAMPLE_FOLDER}/*.cpp)
-	SET(MAIN_CPP ${EXAMPLE_FOLDER}/${EXAMPLE_NAME}.cpp)
+	SET(MAIN_CPP ${EXAMPLE_FOLDER}/${EXAMPLE_NAME}.cpp)	# 프로젝트와 동일한 이름의 cpp를 main.cpp로 설정
 	if(EXISTS ${EXAMPLE_FOLDER}/main.cpp)
 		SET(MAIN_CPP ${EXAMPLE_FOLDER}/main.cpp)
 	ENDIF()

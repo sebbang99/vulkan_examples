@@ -33,6 +33,11 @@ android {
             path "CMakeLists.txt"
         }
     }
+    task wrapper(type: Wrapper) {
+        gradleVersion = '7.0'
+    }
+    task prepareKotlinBuildScriptModel {
+    }
 }
 
 task copyTask {
