@@ -799,11 +799,20 @@ void vkglTF::Model::loadNode(vkglTF::Node *parent, const tinygltf::Node &node, u
 		const tinygltf::Mesh mesh = model.meshes[node.mesh];
 		Mesh *newMesh = new Mesh(device, newNode->matrix);
 		newMesh->name = mesh.name;
+
+
+		const tinygltf::Primitive& primitive = mesh.primitives[0];
+		std::cout << node.name << std::endl;
+
+		if (node.name == "SM_Hebe")
+			std::cout << primitive.material << std::endl;
+
 		for (size_t j = 0; j < mesh.primitives.size(); j++) {
 			const tinygltf::Primitive &primitive = mesh.primitives[j];
 			if (primitive.indices < 0) {
 				continue;
-			}
+			} 
+
 			uint32_t indexStart = static_cast<uint32_t>(indexBuffer.size());
 			uint32_t vertexStart = static_cast<uint32_t>(vertexBuffer.size());
 			uint32_t indexCount = 0;

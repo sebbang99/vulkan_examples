@@ -764,6 +764,8 @@ public:
 		createDescriptorSets();
 		buildCommandBuffers();
 		prepared = true;
+
+		setupConsole("raytracinggltf");
 	}
 
 	void draw()

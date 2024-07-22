@@ -55,6 +55,10 @@ void main()
 	}
 
 	rayPayload.color = color;
+	rayPayload.distance = gl_RayTmaxEXT;
+	rayPayload.normal = normalize(tri.normal);
+	//rayPayload.reflector = ((v0.color.r == 1.0f) && (v0.color.g == 1.0f) && (v0.color.b == 1.0f)) ? 1.0f : 0.0f; 
+	rayPayload.reflector = (geometryNode.textureIndexBaseColor == 0) || (geometryNode.textureIndexBaseColor == 4) ? 1.0f : 0.0f;
 
 	// Shadow casting
 	float tmin = 0.001;
