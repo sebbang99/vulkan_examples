@@ -41,6 +41,7 @@ public:
 	struct UniformData {
 		glm::mat4 viewInverse;
 		glm::mat4 projInverse;
+		//glm::vec4 lightPos;
 		uint32_t frame{ 0 };
 	} uniformData;
 	vks::Buffer uniformBuffer;
@@ -706,6 +707,7 @@ public:
 	{
 		uniformData.projInverse = glm::inverse(camera.matrices.perspective);
 		uniformData.viewInverse = glm::inverse(camera.matrices.view);
+		//uniformData.lightPos = glm::vec4(cos(glm::radians(timer * 360.0f)) * 40.0f, -50.0f + sin(glm::radians(timer * 360.0f)) * 20.0f, 25.0f + sin(glm::radians(timer * 360.0f)) * 5.0f, 0.0f);
 		// This value is used to accumulate multiple frames into the finale picture
 		// It's required as ray tracing needs to do multiple passes for transparency
 		// In this sample we use noise offset by this frame index to shoot rays for transparency into different directions
@@ -742,7 +744,7 @@ public:
 	void loadAssets()
 	{
 		vkglTF::memoryPropertyFlags = VK_BUFFER_USAGE_ACCELERATION_STRUCTURE_BUILD_INPUT_READ_ONLY_BIT_KHR | VK_BUFFER_USAGE_SHADER_DEVICE_ADDRESS_BIT | VK_BUFFER_USAGE_STORAGE_BUFFER_BIT;
-		model.loadFromFile(getAssetPath() + "models/FlightHelmet/glTF/FlightHelmet.gltf", vulkanDevice, queue);
+		model.loadFromFile(getAssetPath() + "models/my_sponza/Sponza.gltf", vulkanDevice, queue);
 	}
 
 	void prepare()
@@ -785,5 +787,4 @@ public:
 		draw();
 	}
 };
-
 VULKAN_EXAMPLE_MAIN()
